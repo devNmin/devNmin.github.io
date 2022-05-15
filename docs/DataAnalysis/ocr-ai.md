@@ -1,8 +1,8 @@
 ---
 
 layout: default
-title: ocr-ai
-parent: kamp-ai
+title: 제조 현장용 OCR학습 제조AI
+parent: DataAnalysis
 nav_order: 1
 ---
 
