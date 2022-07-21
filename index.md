@@ -12,7 +12,6 @@ permalink: /
 
 Here is devNmin Story
 
-
 ---
 
 ## To do list

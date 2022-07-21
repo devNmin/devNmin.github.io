@@ -1,18 +1,20 @@
 ---
 layout: default
-title: django
+title: scikit-learn
 parent: Python
-nav_order: 5
+nav_order: 3
 ---
 
-# django
+# scikit-learn
+
 {: .no_toc }
 
 ## Table of contents
+
 {: .no_toc .text-delta }
 
 1. TOC
-{:toc}
+   {:toc}
 
 ---
 

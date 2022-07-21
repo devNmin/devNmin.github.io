@@ -1,8 +1,7 @@
 ---
-
 layout: default
 title: 제조 현장용 OCR학습 제조AI
-parent: DataAnalysis
+parent: SmartFactory
 nav_order: 1
 ---
 
@@ -21,28 +20,34 @@ reference: [https://www.kamp-ai.kr/front/dataset/AiData.jsp](https://www.kamp-ai
 ## 데이터셋 요약
 
 * **분석 배경**
+  
   * 설비 개요
     * 제관 카운터웨이트의 충진과정에 대한 내용
     * 저울에 표기된 무게를 OCR로 파악
   * 분석배경 소개
     * 카운터 웨이트의 품질문제를 보장을 위하여, 자동화된 무게 입력 과정을 구현
+
 * **분석 목표**
+  
   * 분석 목표
     * 충진과정에서 계측되는 무게를 저울의 LED 숫자표기를 OCR하여 디지털로 변환하는 과정
     * 디지털로 변환한 data를 DB에 자동기
-*   **분석실습**
-    * 데이터소개
-      * 원본이미지로 부터 추출된 JPG이미지 데이터
-      * train data: 21789 / validation data : 5448
 
-*   **모델소개**
-    * 이미지처리에 적합한 CNN을 사용
-    * ResNet 구조 사용
-*   **학습방법**
-    * 확률적 경사 하강법
-    * 아담 옵티마이저
+* **분석실습**
+  
+  * 데이터소개
+    * 원본이미지로 부터 추출된 JPG이미지 데이터
+    * train data: 21789 / validation data : 5448
 
+* **모델소개**
+  
+  * 이미지처리에 적합한 CNN을 사용
+  * ResNet 구조 사용
 
+* **학습방법**
+  
+  * 확률적 경사 하강법
+  * 아담 옵티마이저
 
 ![(a) Original Image                                          (b)cropped Imag](<./assets/image (14).png>)
 
@@ -86,8 +91,6 @@ preprocess_img = preprocess_input(img_array3d)
 
 ![img\_path.jpg](<./assets/image (19).png>)
 
-
-
 ```python
 print("img_array : ",img_array.shape)
 print("img_array3d : ",img_array3d.shape)
@@ -110,7 +113,6 @@ plt.title("img_to_array")
 plt.subplot(1,8,7)
 plt.imshow(preprocess_img[0])
 plt.title("preprocessing for Resnet")
-
 ```
 
 ![Preprocessing for Resnet model](<./assets/image (18).png>)
@@ -122,20 +124,17 @@ class DigitData:
     def __init__(self, path, size=64, split='train'):
         self.path = path
         self.size = (size, size)
-        
+
         # training set과 validation set 구분
         if split == 'train':
             self.image_files = open(os.path.join(path, 'train_data.txt'), 'r').read().splitlines()
         else:
             self.image_files = open(os.path.join(path, 'valid_data.txt'), 'r').read().splitlines()
-        
-        
+
+
     def __len__(self):
         return len(self.image_files)
-
 ```
-
-
 
 #### dataset split
 
@@ -154,8 +153,6 @@ valid_data = DigitData(path, size, 'valid')
 ##pytorch version
 # train_loader = DataLoader(train_data, batch_size=batch_size, shuffle=True)
 # valid_loader = DataLoader(valid_data, batch_size=batch_size, shuffle=True)
-
-
 ```
 
 ```python
@@ -163,7 +160,7 @@ valid_data = DigitData(path, size, 'valid')
 train_x=[]
 for i in range(len(train_data)):
 
-  
+
   path = os.path.join(train_data.path, train_data.image_files[i])
   img = image.load_img(path,target_size=(64,64))
 
@@ -171,7 +168,7 @@ for i in range(len(train_data)):
   # img = tf.keras.preprocessing.image.img_to_array(img)
 
   # img = tf.keras.applications.resnet.preprocess_input(img)
-  
+
   train_x.append(img)
 
 train_x=np.array(train_x)
@@ -191,8 +188,6 @@ train data\_x shape: (21789, 64, 64, 3)
 
 train data\_y shape: (21789,)
 
-
-
 ##### Validation data&#x20;
 
 ```python
@@ -200,7 +195,7 @@ train data\_y shape: (21789,)
 val_x=[]
 for i in range(len(valid_data)):
 
-  
+
   path = os.path.join(valid_data.path, valid_data.image_files[i])
   img = image.load_img(path,target_size=(64,64))
 
@@ -208,7 +203,7 @@ for i in range(len(valid_data)):
   # img = tf.keras.preprocessing.image.img_to_array(img)
 
   # img = tf.keras.applications.resnet.preprocess_input(img)
-  
+
   val_x.append(img)
 
 val_x=np.array(val_x)
@@ -227,8 +222,6 @@ print("val_y shape: ", val_y.shape)
 validation data\_x shape : (5448, 64, 64, 3)
 
 validation data\_y shape : (5448)
-
-
 
 #### Model Learning
 
@@ -267,10 +260,6 @@ model2.fit(train_x, train_y, batch_size=batch_size, epochs=epochs,validation_dat
 ```
 
 ![model fitting](<./assets/image (16).png>)
-
-
-
-
 
 # Reference
 

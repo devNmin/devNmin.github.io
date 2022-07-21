@@ -3,10 +3,10 @@ layout: default
 title: DataAnalysis
 nav_order: 3
 has_children: true
-permalink: /docs/DataAnalysis
+permalink: /docs/SmartFactory
 ---
 
-# DataAnalysis
+# SmartFactory
 
-DataAnalysis
+SmartFactory
 {: .fs-6 .fw-300 }

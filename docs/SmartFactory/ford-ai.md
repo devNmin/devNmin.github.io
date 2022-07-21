@@ -45,10 +45,7 @@ import matplotlib.pyplot as plt
 from scipy.io.arff import loadarff
 from sklearn.preprocessing import StandardScaler, RobustScaler
 import tensorflow as tf
-
 ```
-
-
 
 * **Load Data**
 
@@ -75,8 +72,6 @@ print("train_set.shape:", train.shape)
 print("test_set.shape:", test.shape)
 ```
 
-
-
 * **Split Data**
 
 ```python
@@ -95,8 +90,6 @@ x_valid = np.concatenate((normal_x[ind_x_normal:], abnormal_x[ind_x_abnormal:]),
 y_train = np.concatenate((normal_y[:ind_y_normal], abnormal_y[:ind_y_abnormal]), axis=0)
 y_valid = np.concatenate((normal_y[ind_y_normal:], abnormal_y[ind_y_abnormal:]), axis=0)
 ```
-
-
 
 * **Visualize**
 
@@ -142,8 +135,6 @@ plt.show()
 plt.close()
 ```
 
-
-
 * **data preprocessing(normalize)**
 
 ```python
@@ -166,8 +157,6 @@ y_train[y_train == -1] = 0
 y_valid[y_valid == -1] = 0
 y_test[y_test == -1] = 0
 ```
-
-
 
 * **Model**
 
@@ -242,8 +231,6 @@ history_rnn = rnn_model.fit(
 #######################################
 ```
 
-
-
 **model 3 (CNN)**
 
 ```python
@@ -300,8 +287,6 @@ history_cnn = cnn_model.fit(
 )
 ```
 
-
-
 * **Evaluate**
 
 ```python
@@ -331,10 +316,7 @@ print("\n""Test accuracy", scores[1])
 print("\n""Test loss", scores[0])
 print("%s: %.2f%%" % (cnn_model.metrics_names[1], scores[1]*100))
 ##########################
-
 ```
-
-
 
 * **Confusion matrix**
 
@@ -368,14 +350,12 @@ def draw_confusion_matrix(model, xt, yt, model_name):
     plt.savefig(save_path + '{}_cm.png'.format(model_name), dpi=100, bbox_inches='tight')  # 그림 저장
     plt.show()
     print(classification_report(yt, y_pred))
-    
+
 ##########
 draw_confusion_matrix(clf_lr_1, x_test, y_test, "Logistic")
 draw_confusion_matrix(rnn_model, x_test_exp, y_test, "rnn")
 draw_confusion_matrix(cnn_model, x_test_exp, y_test, "cnn")
 ```
-
-
 
 ## reference
 
