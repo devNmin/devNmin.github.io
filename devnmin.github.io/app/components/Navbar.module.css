@@ -1,0 +1,28 @@
+.navbar {
+  height: 7vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 2rem;
+}
+
+.logo img {
+  height: 7vh;
+  width: auto;
+}
+
+.navItems {
+  display: flex; 
+  align-items: center; 
+}
+
+.navItems p {
+  margin-right: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  cursor: pointer; 
+}
+
+.navItems p:hover {
+  color: #0070f3; 
+}

@@ -6,12 +6,14 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      fontFamily: {
+        sans: ['Cafe24 Moyamoya Face', 'sans'], // 'Cafe24 Moyamoya Face'은 폰트 패밀리 이름입니다.
+      },
+      colors: {
+        darkModeBg: "var(--hello)",
       },
     },
   },

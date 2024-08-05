@@ -2,32 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Cafe24 Moyamoya Face';
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/gh/fonts-archive/Cafe24MoyamoyaFace/Cafe24Moyamoya-Face.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/Cafe24MoyamoyaFace/Cafe24Moyamoya-Face.woff') format('woff'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/Cafe24MoyamoyaFace/Cafe24Moyamoya-Face.otf') format('opentype'),
+       url('https://cdn.jsdelivr.net/gh/fonts-archive/Cafe24MoyamoyaFace/Cafe24Moyamoya-Face.ttf') format('truetype');
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --hello: #aea;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+:root.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  --hello: #e5e5;
 }
